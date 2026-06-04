@@ -668,18 +668,27 @@ footer {
         </div>
       </div>
     </div>
-    <div class="reveal">
+    <div data-fs-success class="form-success" style="display:none;margin-bottom:16px;color:var(--accent);">Merci — message envoyé.</div>
+    <div data-fs-error class="form-error" style="display:none;margin-bottom:16px;color:var(--muted);">Une erreur est survenue. Veuillez réessayer.</div>
+
+    <form action="https://formspree.io/f/mzdqbvwg" method="POST" class="reveal" novalidate>
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_subject" value="Nouveau message depuis le site">
+      <input type="hidden" name="_next" value="/?success=true">
+
       <div class="form-grid">
-        <div class="form-group"><input type="text" placeholder="Prénom"></div>
-        <div class="form-group"><input type="text" placeholder="Nom"></div>
-        <div class="form-group"><input type="email" placeholder="Email"></div>
-        <div class="form-group"><input type="text" placeholder="Entreprise"></div>
+        <div class="form-group"><input data-fs-field type="text" name="first_name" placeholder="Prénom" required></div>
+        <div class="form-group"><input data-fs-field type="text" name="last_name" placeholder="Nom" required></div>
+        <div class="form-group"><input data-fs-field type="email" name="email" placeholder="Email" required></div>
+        <div class="form-group"><input data-fs-field type="text" name="company" placeholder="Entreprise"></div>
       </div>
+
       <div class="form-grid full" style="margin-top:16px;">
-        <div class="form-group"><textarea rows="5" placeholder="Votre message..."></textarea></div>
+        <div class="form-group"><textarea data-fs-field name="message" rows="5" placeholder="Votre message..." required></textarea></div>
       </div>
-      <button class="form-submit" style="margin-top:16px;">Envoyer le message →</button>
-    </div>
+
+      <button data-fs-submit-btn type="submit" class="form-submit" style="margin-top:16px;">Envoyer le message →</button>
+    </form>
   </div>
 </section>
 
@@ -725,6 +734,13 @@ footer {
   <span>© 2025 Argov Digital Agency — Tous droits réservés</span>
   <span>Fès, Maroc</span>
 </div>
+
+<!-- Formspree AJAX (CDN) init -->
+<script>
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: 'form[action="https://formspree.io/f/mzdqbvwg"]', formId: 'mzdqbvwg' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 <script>
 // ── CURSOR ──────────────────────────────
