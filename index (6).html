@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ARGOV — Agence digitale créative</title>
+<meta name="description" content="Argov est une agence digitale qui combine design, code et stratégie pour bâtir des marques performantes." />
+<meta property="og:title" content="ARGOV — Agence digitale créative" />
+<meta property="og:description" content="Design, web, branding, SEO et automation. Une agence, un système d'exploitation pour votre marque." />
+<style>
+  :root {
+    --ax-bg: #150a26;
+    --ax-bg-deep: #0c0518;
+    --ax-fg: #faf2c9;
+    --ax-muted: #b8a4d4;
+    --ax-line: rgba(250, 242, 201, 0.08);
+    --ax-line-strong: rgba(250, 242, 201, 0.28);
+    --ax-acid: #f4e18b;
+    --ax-acid-deep: #1f5e3a;
+    --ax-pink: #e6a4ae;
+    --ax-card: #1e1135;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--ax-bg); color: var(--ax-fg);
+    font-family: ui-sans-serif, -apple-system, "Inter", "Helvetica Neue", system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+  a { color: inherit; }
+
+  .ax-nav { position: sticky; top: 0; z-index: 30;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px clamp(16px, 4vw, 40px);
+    background: color-mix(in oklab, var(--ax-bg) 80%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--ax-line); }
+  .ax-logo { display: inline-flex; align-items: center; gap: 8px;
+    font-weight: 800; letter-spacing: 0.04em; color: var(--ax-fg); text-decoration: none; font-size: 14px; }
+  .ax-logo-os { color: var(--ax-acid); }
+  .ax-logo-dot { width: 8px; height: 8px; border-radius: 999px;
+    background: var(--ax-acid); box-shadow: 0 0 12px var(--ax-acid);
+    animation: ax-pulse 2s ease-in-out infinite; }
+  @keyframes ax-pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.5;transform:scale(.8);} }
+  .ax-nav-links { display: none; gap: 28px; }
+  .ax-nav-links a { color: var(--ax-muted); text-decoration: none; font-size: 13px;
+    letter-spacing: 0.04em; transition: color 200ms ease; }
+  .ax-nav-links a:hover { color: var(--ax-fg); }
+  .ax-cta-mini { color: #150a26; background: var(--ax-acid);
+    padding: 8px 14px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+    text-decoration: none; transition: transform 200ms ease, box-shadow 200ms ease; }
+  .ax-cta-mini:hover { transform: translateY(-1px); box-shadow: 0 8px 24px -8px var(--ax-acid); }
+  @media (min-width: 760px) { .ax-nav-links { display: flex; } }
+
+  .ax-hero { padding: clamp(48px,10vw,120px) clamp(20px,5vw,60px) clamp(40px,6vw,80px);
+    max-width: 1200px; margin: 0 auto;
+    background:
+      radial-gradient(60% 50% at 80% 0%, rgba(244,225,139,0.18), transparent 70%),
+      radial-gradient(40% 40% at 0% 30%, rgba(230,164,174,0.16), transparent 70%); }
+  .ax-pill { display:inline-flex; align-items:center; gap:8px;
+    border:1px solid var(--ax-line-strong); padding:6px 12px; font-size:11px;
+    letter-spacing:0.18em; color: var(--ax-muted); font-family: ui-monospace, monospace; }
+  .ax-pulse { width:6px; height:6px; border-radius:999px; background:var(--ax-acid);
+    box-shadow:0 0 10px var(--ax-acid); animation: ax-pulse 2s ease-in-out infinite; }
+  .ax-hero-title { margin: 24px 0 16px; font-size: clamp(2.4rem,8vw,5.4rem);
+    line-height:.98; letter-spacing:-0.02em; font-weight:800; }
+  .ax-hero-title em { font-style: italic; font-weight: 400; color: var(--ax-muted); }
+  .ax-mark { color: #150a26; background: var(--ax-acid); padding: 0 0.15em; }
+  .ax-hero-sub { max-width: 620px; color: var(--ax-muted);
+    font-size: clamp(.95rem,1.6vw,1.1rem); line-height: 1.6; }
+  .ax-hero-actions { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+  .ax-btn { display:inline-flex; align-items:center; gap:8px;
+    padding: 14px 22px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em;
+    text-decoration: none; transition: transform 200ms ease, background 200ms ease, color 200ms ease, box-shadow 200ms ease; }
+  .ax-btn-primary { background: var(--ax-acid); color: #150a26; }
+  .ax-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -10px var(--ax-acid); }
+  .ax-btn-ghost { border: 1px solid var(--ax-line-strong); color: var(--ax-fg); }
+  .ax-btn-ghost:hover { background: rgba(255,255,255,0.06); }
+
+  .ax-stats { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px;
+    margin-top: clamp(40px,8vw,72px); background: var(--ax-line);
+    border-top:1px solid var(--ax-line); border-bottom:1px solid var(--ax-line); }
+  @media (min-width:720px){ .ax-stats { grid-template-columns: repeat(4,1fr); } }
+  .ax-stat { background: var(--ax-bg); padding: 22px 18px; }
+  .ax-stat-value { font-size: clamp(1.8rem,4vw,2.6rem); font-weight: 800;
+    letter-spacing: -0.02em; color: var(--ax-acid); }
+  .ax-stat-label { color: var(--ax-muted); font-size: 12px; letter-spacing: 0.08em; margin-top: 4px; }
+
+  .ax-marquee { border-top: 1px solid var(--ax-line); border-bottom: 1px solid var(--ax-line);
+    overflow: hidden; padding: 14px 0; background: var(--ax-bg-deep); }
+  .ax-marquee-track { display: flex; gap: 48px; width: max-content; animation: ax-marquee 28s linear infinite; }
+  .ax-marquee-group { display: flex; gap: 48px; }
+  .ax-marquee-item { color: var(--ax-muted); font-size: 13px; letter-spacing: 0.18em; font-family: ui-monospace, monospace; }
+  @keyframes ax-marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  .ax-section { padding: clamp(56px,10vw,120px) clamp(20px,5vw,60px); max-width: 1200px; margin: 0 auto; }
+  .ax-section-head { margin-bottom: clamp(28px,5vw,56px); }
+  .ax-eyebrow { font-family: ui-monospace, monospace; font-size: 12px; color: var(--ax-acid); letter-spacing: 0.18em; }
+  .ax-h2 { font-size: clamp(2rem,5.5vw,3.6rem); line-height: 1.02; letter-spacing: -0.02em; font-weight: 800; margin: 8px 0 0; }
+  .ax-h2 em { font-style: italic; font-weight: 400; color: var(--ax-pink); }
+
+  .ax-services-grid { display: grid; gap: 1px; grid-template-columns: 1fr;
+    background: var(--ax-line); border: 1px solid var(--ax-line); }
+  @media (min-width:640px){ .ax-services-grid { grid-template-columns: repeat(2,1fr); } }
+  @media (min-width:1024px){ .ax-services-grid { grid-template-columns: repeat(4,1fr); } }
+  .ax-service { background: var(--ax-card); padding: 28px 22px;
+    display:flex; flex-direction:column; gap:12px;
+    transition: background 250ms ease, transform 250ms ease; position: relative; }
+  .ax-service:hover { background: var(--ax-bg-deep); transform: translateY(-2px); }
+  .ax-service-top { display:flex; justify-content:space-between; align-items:center; }
+  .ax-service-code { font-family: ui-monospace, monospace; font-size: 12px; color: var(--ax-muted); letter-spacing: 0.1em; }
+  .ax-service-icon { font-size: 22px; color: var(--ax-acid); text-shadow: 0 0 14px rgba(244,225,139,0.45); }
+  .ax-service-name { font-size: 1.15rem; font-weight: 700; margin: 4px 0 0; }
+  .ax-service-desc { color: var(--ax-muted); font-size: 14px; line-height: 1.55; }
+  .ax-service-tags { list-style: none; padding: 0; margin: 8px 0 0; display:flex; flex-wrap:wrap; gap:6px; }
+  .ax-service-tags li { font-family: ui-monospace, monospace; font-size: 11px;
+    letter-spacing: 0.04em; color: var(--ax-muted); border: 1px solid var(--ax-line-strong); padding: 4px 8px; }
+
+  .ax-about { border-top: 1px solid var(--ax-line); }
+  .ax-about-grid { display: grid; gap: 32px; grid-template-columns: 1fr; margin-top: clamp(24px,4vw,40px); }
+  @media (min-width:860px){ .ax-about-grid { grid-template-columns: 3fr 2fr; align-items: start; } }
+  .ax-about-text { color: var(--ax-muted); font-size: clamp(1rem,1.6vw,1.15rem); line-height: 1.7; }
+  .ax-quote { border-left: 2px solid var(--ax-pink); padding: 8px 0 8px 18px;
+    font-size: 1.05rem; line-height: 1.5; color: var(--ax-fg); font-style: italic; margin: 0; }
+
+  .ax-process { list-style: none; padding: 0; margin: 0; display: grid; gap: 1px;
+    grid-template-columns: 1fr; background: var(--ax-line); border: 1px solid var(--ax-line); }
+  @media (min-width:720px){ .ax-process { grid-template-columns: repeat(4,1fr); } }
+  .ax-step { background: var(--ax-card); padding: 28px 22px; }
+  .ax-step-n { font-family: ui-monospace, monospace; color: var(--ax-acid); font-size: 12px; letter-spacing: 0.18em; }
+  .ax-step-title { font-size: 1.25rem; font-weight: 700; margin: 8px 0 6px; }
+  .ax-step-desc { color: var(--ax-muted); font-size: 14px; line-height: 1.6; }
+
+  .ax-contact { border-top: 1px solid var(--ax-line); }
+  .ax-contact-sub { color: var(--ax-muted); margin-top: 12px; max-width: 540px; }
+  .ax-contact-grid { display: grid; gap: 16px; grid-template-columns: 1fr; margin-top: clamp(28px,5vw,48px); }
+  @media (min-width:720px){ .ax-contact-grid { grid-template-columns: repeat(3,1fr); } }
+  .ax-contact-card { display: block; padding: 24px; text-decoration: none; color: inherit;
+    background: var(--ax-card); border: 1px solid var(--ax-line);
+    transition: border-color 250ms ease, transform 250ms ease, background 250ms ease; }
+  .ax-contact-card:hover { border-color: var(--ax-acid); transform: translateY(-2px); background: var(--ax-bg-deep); }
+  .ax-contact-icon { font-size: 22px; color: var(--ax-acid); text-shadow: 0 0 14px rgba(244,225,139,0.45); }
+  .ax-contact-label { color: var(--ax-muted); font-size: 12px; letter-spacing: 0.12em; margin-top: 14px; }
+  .ax-contact-value { font-size: 1rem; font-weight: 600; margin-top: 2px; }
+
+  .ax-footer { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;
+    gap: 12px; padding: 22px clamp(20px,5vw,60px); border-top: 1px solid var(--ax-line);
+    font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--ax-muted); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ax-marquee-track, .ax-pulse, .ax-logo-dot { animation: none; }
+  }
+</style>
+</head>
+<body>
+  <header class="ax-nav">
+    <a href="#top" class="ax-logo"><span class="ax-logo-dot"></span> ARGOV<span class="ax-logo-os">.OS</span></a>
+    <nav class="ax-nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">Agence</a>
+      <a href="#process">Méthode</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="ax-cta-mini">Démarrer →</a>
+  </header>
+
+  <section id="top" class="ax-hero">
+    <span class="ax-pill"><span class="ax-pulse"></span> SYSTEM ONLINE · v2.6</span>
+    <h1 class="ax-hero-title">On donne <em>vie</em> à votre<br/>présence <span class="ax-mark">digitale</span>.</h1>
+    <p class="ax-hero-sub">Argov est une agence digitale qui combine design, code et stratégie pour bâtir des marques performantes — de la conception au lancement.</p>
+    <div class="ax-hero-actions">
+      <a href="#contact" class="ax-btn ax-btn-primary">Démarrer un projet</a>
+      <a href="#services" class="ax-btn ax-btn-ghost">Voir nos services</a>
+    </div>
+    <div class="ax-stats">
+      <div class="ax-stat"><div class="ax-stat-value">5+</div><div class="ax-stat-label">Années d'expérience</div></div>
+      <div class="ax-stat"><div class="ax-stat-value">12+</div><div class="ax-stat-label">Clients satisfaits</div></div>
+      <div class="ax-stat"><div class="ax-stat-value">8</div><div class="ax-stat-label">Expertises</div></div>
+      <div class="ax-stat"><div class="ax-stat-value">100%</div><div class="ax-stat-label">Sur-mesure</div></div>
+    </div>
+  </section>
+
+  <div class="ax-marquee" aria-hidden="true">
+    <div class="ax-marquee-track">
+      <div class="ax-marquee-group">
+        <span class="ax-marquee-item">◆ WEB DESIGN</span><span class="ax-marquee-item">◆ BRANDING</span>
+        <span class="ax-marquee-item">◆ SEO</span><span class="ax-marquee-item">◆ SOCIAL MEDIA</span>
+        <span class="ax-marquee-item">◆ CONTENT</span><span class="ax-marquee-item">◆ UX/UI</span>
+        <span class="ax-marquee-item">◆ AUTOMATION</span><span class="ax-marquee-item">◆ STRATÉGIE</span>
+        <span class="ax-marquee-item">◆ DEV</span>
+      </div>
+      <div class="ax-marquee-group">
+        <span class="ax-marquee-item">◆ WEB DESIGN</span><span class="ax-marquee-item">◆ BRANDING</span>
+        <span class="ax-marquee-item">◆ SEO</span><span class="ax-marquee-item">◆ SOCIAL MEDIA</span>
+        <span class="ax-marquee-item">◆ CONTENT</span><span class="ax-marquee-item">◆ UX/UI</span>
+        <span class="ax-marquee-item">◆ AUTOMATION</span><span class="ax-marquee-item">◆ STRATÉGIE</span>
+        <span class="ax-marquee-item">◆ DEV</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="services" class="ax-section">
+    <div class="ax-section-head">
+      <span class="ax-eyebrow">// Expertise</span>
+      <h2 class="ax-h2">Ce que nous <em>faisons</em></h2>
+    </div>
+    <div class="ax-services-grid">
+      <article class="ax-service"><div class="ax-service-top"><span class="ax-service-code">01</span><span class="ax-service-icon">▣</span></div><h3 class="ax-service-name">Web Design &amp; Dev</h3><p class="ax-service-desc">Sites performants, design moderne, code propre.</p><ul class="ax-service-tags"><li>Next.js</li><li>UI/UX</li><li>CMS</li><li>SEO</li></ul></article>
+      <article class="ax-service"><div class="ax-service-top"><span class="ax-service-code">02</span><span class="ax-service-icon">⌨</span></div><h3 class="ax-service-name">Content &amp; Copy</h3><p class="ax-service-desc">Des mots qui convertissent, une voix qui marque.</p><ul class="ax-service-tags"><li>Storytelling</li><li>SEO copy</li><li>Brand voice</li></ul></article>
+      <article class="ax-service"><div class="ax-service-top"><span class="ax-service-code">03</span><span class="ax-service-icon">◉</span></div><h3 class="ax-service-name">UX / UI Design</h3><p class="ax-service-desc">Interfaces intuitives, parcours optimisés.</p><ul class="ax-service-tags"><li>Wireframe</li><li>Prototype</li><li>Design system</li></ul></article>
+      <article class="ax-service"><div class="ax-service-top"><span class="ax-service-code">04</span><span class="ax-service-icon">◈</span></div><h3 class="ax-service-name">Branding &amp; Identité</h3><p class="ax-service-desc">Une identité visuelle qui raconte qui vous êtes.</p><ul class="ax-service-tags"><li>Logo</li><li>Charte</li><li>Guidelines</li></ul></article>
+      <article class="ax-service"><div class="ax-service-top"><span class="ax-service-code">05</span><span class="ax-service-icon">♪</span></div><h3 class="ax-service-name">Social Media</h3><p class="ax-service-desc">Une présence en ligne qui engage et fidélise.</p><ul class="ax-service-tags"><li>Contenu</li><li>Community</li><li>Ads</li></ul></article>
+      <article class="ax-service"><div class="ax-service-top"><span class="ax-service-code">06</span><span class="ax-service-icon">◐</span></div><h3 class="ax-service-name">SEO &amp; Référencement</h3><p class="ax-service-desc">Soyez trouvé. Soyez choisi. Restez en haut.</p><ul class="ax-service-tags"><li>Audit</li><li>On-page</li><li>Tech SEO</li></ul></article>
+      <article class="ax-service"><div class="ax-service-top"><span class="ax-service-code">07</span><span class="ax-service-icon">⚙</span></div><h3 class="ax-service-name">Automation &amp; IA</h3><p class="ax-service-desc">Automatisez. Augmentez. Avancez plus vite.</p><ul class="ax-service-tags"><li>Workflows</li><li>Chatbots</li><li>LLM</li></ul></article>
+      <article class="ax-service"><div class="ax-service-top"><span class="ax-service-code">08</span><span class="ax-service-icon">✦</span></div><h3 class="ax-service-name">Stratégie &amp; Conseil</h3><p class="ax-service-desc">La vision long-terme qui aligne tout le reste.</p><ul class="ax-service-tags"><li>Audit</li><li>Roadmap</li><li>Growth</li></ul></article>
+    </div>
+  </section>
+
+  <section id="about" class="ax-section ax-about">
+    <span class="ax-eyebrow">// L'agence</span>
+    <h2 class="ax-h2">Nous donnons vie à votre <em>vision</em></h2>
+    <div class="ax-about-grid">
+      <p class="ax-about-text">Argov est une agence de communication digitale dédiée à la croissance de vos projets. Nous combinons créativité, stratégie et technologie pour bâtir des identités digitales puissantes. De la conception à l'exécution, nous vous accompagnons avec une approche sur-mesure et orientée résultats.</p>
+      <blockquote class="ax-quote">"Chaque marque mérite une présence digitale à la hauteur de ses ambitions."</blockquote>
+    </div>
+  </section>
+
+  <section id="process" class="ax-section">
+    <div class="ax-section-head">
+      <span class="ax-eyebrow">// Process</span>
+      <h2 class="ax-h2">Notre <em>méthode</em></h2>
+    </div>
+    <ol class="ax-process">
+      <li class="ax-step"><span class="ax-step-n">01</span><h3 class="ax-step-title">Discovery</h3><p class="ax-step-desc">Brief approfondi, audit de l'existant, définition des KPI.</p></li>
+      <li class="ax-step"><span class="ax-step-n">02</span><h3 class="ax-step-title">Strategy</h3><p class="ax-step-desc">Plan d'action, roadmap, choix techniques alignés business.</p></li>
+      <li class="ax-step"><span class="ax-step-n">03</span><h3 class="ax-step-title">Création</h3><p class="ax-step-desc">Design, développement, contenu — itérations rapides.</p></li>
+      <li class="ax-step"><span class="ax-step-n">04</span><h3 class="ax-step-title">Lancement</h3><p class="ax-step-desc">Mise en ligne, mesure, optimisation continue.</p></li>
+    </ol>
+  </section>
+
+  <section id="contact" class="ax-section ax-contact">
+    <span class="ax-eyebrow">// Contact</span>
+    <h2 class="ax-h2">Démarrons votre <em>projet</em></h2>
+    <p class="ax-contact-sub">Un brief, une idée, un objectif ? Écrivez-nous — on revient sous 24h.</p>
+    <div class="ax-contact-grid">
+      <a href="mailto:hello@argov.agency" class="ax-contact-card"><span class="ax-contact-icon">✉</span><div class="ax-contact-label">Email</div><div class="ax-contact-value">hello@argov.agency</div></a>
+      <a href="tel:+212600000000" class="ax-contact-card"><span class="ax-contact-icon">☎</span><div class="ax-contact-label">Téléphone</div><div class="ax-contact-value">+212 6XX XXX XXX</div></a>
+      <div class="ax-contact-card"><span class="ax-contact-icon">◉</span><div class="ax-contact-label">Adresse</div><div class="ax-contact-value">Fès, Maroc</div></div>
+    </div>
+  </section>
+
+  <footer class="ax-footer">
+    <span>© 2026 ARGOV DIGITAL AGENCY</span>
+    <span>SYSTEM v2.6 — ALL RIGHTS RESERVED</span>
+  </footer>
+</body>
+</html>
