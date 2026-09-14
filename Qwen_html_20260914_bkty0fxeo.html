@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Argov. | Agence Digitale Sur-Mesure</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // YOUR BRAND COLORS
+                        primary: '#D4A574',      // Warm gold
+                        primaryDark: '#B8895A',  // Deeper gold for hover
+                        primaryLight: '#E5C09A', // Lighter gold for accents
+                        secondary: '#2C3E50',    // Deep navy
+                        accent: '#E67E22',       // Warm orange
+                        dark: '#000000',
+                        darkCard: 'rgba(10, 10, 10, 0.7)',
+                        light: '#FFFFFF',
+                        muted: '#9CA3AF'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #000000;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(212, 165, 116, 0.5);
+            transform: translateY(-5px);
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000000; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D4A574; }
+    </style>
+</head>
+
+<body class="text-light font-sans antialiased selection:bg-primary selection:text-black">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50 top-0 bg-dark/70 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center">
+                <!-- 💡 TO USE YOUR ACTUAL LOGO IMAGE FILE, REPLACE WITH:
+                     <img src="YOUR-LOGO-FILE.png" alt="Argov." class="h-8 md:h-9"> -->
+                <span class="font-display font-extrabold text-3xl tracking-tight text-white leading-none">
+                    Argov<span class="text-primary">.</span>
+                </span>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-muted">
+                <a href="#services-3d" class="hover:text-white transition-colors">Services</a>
+                <a href="#stats" class="hover:text-white transition-colors">Résultats</a>
+                <a href="#method" class="hover:text-white transition-colors">Méthode</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            </div>
+
+            <a href="#contact" class="hidden md:inline-flex px-6 py-2.5 text-sm font-semibold text-black bg-primary hover:bg-primaryLight transition-all rounded-full">
+                Démarrer un projet
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10" data-aos="fade-up" data-aos-duration="1000">
+            <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs font-medium text-primary mb-8 tracking-wider uppercase">
+                ✧ Agence faite main, pas à la chaîne
+            </div>
+
+            <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[1.1] mb-8 tracking-tight">
+                On donne vie à votre<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-muted">
+                    présence digitale
+                </span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-12 leading-relaxed font-light">
+                Design, social media, vidéo, branding — chaque détail est pensé comme un artisan. Pas de templates, que du sur-mesure.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a href="#contact" class="px-8 py-4 bg-primary text-black font-semibold rounded-full transition-all shadow-[0_0_20px_rgba(212,165,116,0.4)] hover:shadow-[0_0_40px_rgba(212,165,116,0.7)] transform hover:-translate-y-1">
+                    Démarrer un projet
+                </a>
+
+                <a href="#services-3d" class="px-8 py-4 border border-white/20 hover:bg-white/5 text-white font-semibold rounded-full transition-all transform hover:-translate-y-1">
+                    Voir nos services →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section id="stats" class="py-32 relative z-10 bg-dark/50 backdrop-blur-sm scroll-mt-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 tracking-tight">Petit studio, grands résultats</h2>
+                <div class="h-1 w-20 bg-primary rounded-full mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="glass-card p-8 rounded-3xl text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="font-display text-5xl font-extrabold text-primary mb-2">5+</div>
+                    <p class="text-muted">ans d'expérience</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="font-display text-5xl font-extrabold text-primary mb-2">12+</div>
+                    <p class="text-muted">clients servis</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="font-display text-5xl font-extrabold text-primary mb-2">80+</div>
+                    <p class="text-muted">projets livrés</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="font-display text-5xl font-extrabold text-primary mb-2">100%</div>
+                    <p class="text-muted">sur-mesure</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D SERVICES SECTION -->
+    <section id="services-3d" class="relative h-[400vh] scroll-mt-24">
+        <div class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+            <canvas id="monitor-canvas" class="absolute inset-0 z-0 w-full h-full pointer-events-none"></canvas>
+
+            <div id="services-title" class="absolute top-24 left-0 w-full text-center z-10 transition-opacity duration-300 pointer-events-none">
+                <h2 class="font-display text-4xl md:text-5xl font-bold tracking-tight">
+                    Quatre piliers, <span class="text-primary">une signature</span>
+                </h2>
+                <p class="text-muted mt-4">Scrollez pour explorer nos expertises</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TARGET AUDIENCE -->
+    <section class="py-32 bg-dark relative z-10 scroll-mt-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16" data-aos="fade-right">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 tracking-tight">On travaille avec ceux qui osent</h2>
+                <div class="h-1 w-20 bg-primary rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-5xl mb-4">🏥</div>
+                    <h3 class="font-display text-2xl font-bold mb-4 text-primary">Santé & Bien-être</h3>
+                    <p class="text-muted text-lg leading-relaxed">
+                        Médecins, cliniques, ostéopathes — une présence digitale qui inspire confiance.
+                    </p>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-5xl mb-4">🚀</div>
+                    <h3 class="font-display text-2xl font-bold mb-4 text-accent">Startups & PME</h3>
+                    <p class="text-muted text-lg leading-relaxed">
+                        Le package digital complet pour passer de l'ombre à la lumière.
+                    </p>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-5xl mb-4">🏪</div>
+                    <h3 class="font-display text-2xl font-bold mb-4 text-primary">Commerce & Retail</h3>
+                    <p class="text-muted text-lg leading-relaxed">
+                        Votre vitrine physique mérite une expérience digitale à la hauteur.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOTRE DIFFÉRENCE -->
+    <section class="py-32 bg-dark/50 backdrop-blur-sm relative z-10 scroll-mt-24">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+            <div data-aos="fade-right">
+                <h2 class="font-display text-4xl md:text-6xl font-extrabold mb-8 leading-tight tracking-tight">
+                    Artisans du <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">digital</span>.
+                </h2>
+
+                <div class="space-y-6 text-xl text-muted leading-relaxed font-light">
+                    <p>
+                        On ne vend pas de templates. On ne fait pas de copier-coller.
+                        <strong class="text-white font-medium">On construit des solutions sur-mesure</strong>
+                        pour chaque marque, chaque secteur, chaque objectif.
+                    </p>
+
+                    <p>
+                        Cette indépendance, c'est la différence entre un site qui ressemble aux autres et
+                        <strong class="text-white font-medium">une présence digitale qu'on vous envie</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="relative" data-aos="fade-left">
+                <div class="glass-card p-12 rounded-3xl border-l-4 border-l-primary">
+                    <svg class="w-12 h-12 text-primary/40 mb-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                    </svg>
+
+                    <p class="font-display text-2xl md:text-3xl font-semibold text-white leading-snug mb-8">
+                        « Le digital n'est pas une option, c'est le terrain de jeu de votre marque. On est là pour vous aider à y briller. »
+                    </p>
+
+                    <div class="flex items-center gap-5">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-black font-bold text-xl">
+                            A
+                        </div>
+
+                        <div>
+                            <p class="font-bold text-white text-lg">L'équipe Argov</p>
+                            <p class="text-sm text-primary tracking-wider uppercase">Artisans du Digital</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METHOD SECTION -->
+    <section id="method" class="py-32 bg-dark relative z-10 scroll-mt-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 tracking-tight">Comment on travaille</h2>
+                <div class="h-1 w-20 bg-primary rounded-full mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="glass-card p-8 rounded-3xl relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute -top-6 -left-6 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-black font-bold text-xl">01</div>
+                    <h3 class="font-display text-2xl font-bold mb-3 text-primary">Discovery</h3>
+                    <p class="text-muted">Brief, audit, objectifs.</p>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl relative" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute -top-6 -left-6 w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-bold text-xl">02</div>
+                    <h3 class="font-display text-2xl font-bold mb-3 text-primary">Strategy</h3>
+                    <p class="text-muted">Architecture, roadmap.</p>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl relative" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute -top-6 -left-6 w-12 h-12 bg-accent rounded-full flex items-center justify-center text-black font-bold text-xl">03</div>
+                    <h3 class="font-display text-2xl font-bold mb-3 text-primary">Création</h3>
+                    <p class="text-muted">Design, contenu, itérations.</p>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl relative" data-aos="fade-up" data-aos-delay="400">
+                    <div class="absolute -top-6 -left-6 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-black font-bold text-xl">04</div>
+                    <h3 class="font-display text-2xl font-bold mb-3 text-primary">Lancement</h3>
+                    <p class="text-muted">Déploiement, suivi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT CTA -->
+    <section id="contact" class="py-40 bg-darkCard text-center relative z-10 border-t border-white/5 scroll-mt-24">
+        <div class="max-w-4xl mx-auto px-6" data-aos="zoom-in">
+            <h2 class="font-display text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
+                Prêt à construire<br>quelque chose de beau ?
+            </h2>
+            <p class="text-xl text-muted mb-10">
+                Discutons de votre projet — on revient vers vous sous 24h, promis.
+            </p>
+
+            <a href="mailto:contact@argov.it.com" class="inline-flex items-center justify-center px-12 py-6 text-xl font-bold text-black bg-primary hover:bg-primaryLight rounded-full transition-all transform hover:scale-105 shadow-[0_0_40px_rgba(212,165,116,0.4)]">
+                Démarrer un projet →
+            </a>
+        </div>
+    </section>
+
+    <!-- CONTACT INFO -->
+    <section class="py-32 bg-dark relative z-10 scroll-mt-24">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 tracking-tight">Raconte-nous ton projet</h2>
+                <div class="h-1 w-20 bg-primary rounded-full mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass-card p-8 rounded-3xl" data-aos="fade-right">
+                    <h3 class="font-display text-2xl font-bold mb-6 text-primary">Contact</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-sm text-muted uppercase tracking-wider mb-1">Email</p>
+                            <a href="mailto:contact@argov.it.com" class="text-white text-lg hover:text-primary transition-colors">contact@argov.it.com</a>
+                        </div>
+                        <div>
+                            <p class="text-sm text-muted uppercase tracking-wider mb-1">Téléphone / WhatsApp</p>
+                            <a href="tel:+212700386427" class="text-white text-lg hover:text-primary transition-colors">+212 700 386 427</a>
+                        </div>
+                        <div>
+                            <p class="text-sm text-muted uppercase tracking-wider mb-1">Studio</p>
+                            <p class="text-white text-lg">Fès, Maroc</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl" data-aos="fade-left">
+                    <h3 class="font-display text-2xl font-bold mb-6 text-primary">✧ Envoyez-nous un mot</h3>
+                    <form class="space-y-4">
+                        <input type="text" placeholder="Votre nom" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-primary focus:outline-none transition-colors">
+                        <input type="email" placeholder="Votre email" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-primary focus:outline-none transition-colors">
+                        <textarea placeholder="Votre message" rows="4" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-primary focus:outline-none transition-colors resize-none"></textarea>
+                        <button type="submit" class="w-full px-8 py-4 bg-primary text-black font-semibold rounded-full transition-all hover:bg-primaryLight">
+                            Envoyer le message →
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark border-t border-white/5 py-12 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <span class="font-display font-extrabold text-2xl tracking-tight text-white leading-none">
+                Argov<span class="text-primary">.</span>
+            </span>
+            <div class="text-muted text-sm">
+                &copy; 2024 Argov. Tous droits réservés. Agence faite main, pas à la chaîne.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({ once: true, offset: 100, duration: 800, easing: 'ease-out-cubic' });
+    </script>
+
+    <!-- 3D MONITOR SCROLLYTELLING ENGINE (YOUR BRAND COLORS) -->
+    <script>
+        const canvas = document.getElementById('monitor-canvas');
+
+        if (canvas) {
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x000000);
+            scene.fog = new THREE.Fog(0x000000, 18, 55);
+
+            const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+            camera.position.set(0, 0, 20);
+            camera.lookAt(0, 0, 0);
+
+            const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+            const mainLight = new THREE.DirectionalLight(0xffffff, 1);
+            mainLight.position.set(5, 10, 7);
+            scene.add(mainLight);
+
+            // Brand gold glow for the monitor
+            const screenLight = new THREE.PointLight(0xD4A574, 2, 30);
+            screenLight.position.set(0, 0, 3);
+            scene.add(screenLight);
+
+            const monitorGroup = new THREE.Group();
+            scene.add(monitorGroup);
+            monitorGroup.position.set(0, 0, 0);
+            monitorGroup.rotation.set(0, 0, 0);
+
+            const frameMat = new THREE.MeshStandardMaterial({ color: 0x111111, metalness: 0.8, roughness: 0.2 });
+            const screenMat = new THREE.MeshBasicMaterial({ color: 0x050505 });
+            const standMat = new THREE.MeshStandardMaterial({ color: 0x0a0a0a, metalness: 0.9, roughness: 0.3 });
+
+            const body = new THREE.Mesh(new THREE.BoxGeometry(16, 10, 0.5), frameMat);
+            monitorGroup.add(body);
+
+            const screen = new THREE.Mesh(new THREE.PlaneGeometry(15, 9), screenMat);
+            screen.position.z = 0.26;
+            monitorGroup.add(screen);
+
+            const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.8, 1.2, 5, 32), standMat);
+            neck.position.set(0, -7.2, -1.2);
+            monitorGroup.add(neck);
+
+            const base = new THREE.Mesh(new THREE.CylinderGeometry(4, 4, 0.3, 32), standMat);
+            base.position.set(0, -9.7, -1.2);
+            monitorGroup.add(base);
+
+            // Services with your exact brand colors
+            const services = [
+                { title: "Web Design & Dev", tags: ["UI/UX", "SEO", "Performance"], color: "#D4A574", desc: "Sites vitrines, landing pages — des interfaces premium." },
+                { title: "Social Media", tags: ["Instagram", "TikTok", "LinkedIn"], color: "#E67E22", desc: "Community management, contenu, Meta Ads." },
+                { title: "Vidéo & Motion", tags: ["Premiere Pro", "After Effects", "VFX"], color: "#2C3E50", desc: "Montage, motion design — du cinéma pour votre marque." },
+                { title: "Branding & Identité", tags: ["Logo", "Charte", "Packaging"], color: "#D4A574", desc: "Logos, univers graphique — une marque qu'on n'oublie pas." }
+            ];
+
+            const cardCount = services.length;
+
+            function drawRoundedRect(ctx, x, y, width, height, radius) {
+                ctx.beginPath();
+                ctx.moveTo(x + radius, y);
+                ctx.lineTo(x + width - radius, y);
+                ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+                ctx.lineTo(x + width, y + height - radius);
+                ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+                ctx.lineTo(x + radius, y + height);
+                ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+                ctx.lineTo(x, y + radius);
+                ctx.quadraticCurveTo(x, y, x + radius, y);
+                ctx.closePath();
+            }
+
+            function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+                const words = text.split(" ");
+                let line = "";
+                for (let n = 0; n < words.length; n++) {
+                    const testLine = line + words[n] + " ";
+                    const metrics = ctx.measureText(testLine);
+                    if (metrics.width > maxWidth && n > 0) {
+                        ctx.fillText(line, x, y);
+                        line = words[n] + " ";
+                        y += lineHeight;
+                    } else {
+                        line = testLine;
+                    }
+                }
+                ctx.fillText(line, x, y);
+                return y + lineHeight;
+            }
+
+            function createCardTexture(service) {
+                const offscreen = document.createElement("canvas");
+                offscreen.width = 1024;
+                offscreen.height = 640;
+                const ctx = offscreen.getContext("2d");
+                ctx.clearRect(0, 0, offscreen.width, offscreen.height);
+
+                drawRoundedRect(ctx, 0, 0, offscreen.width, offscreen.height, 40);
+                ctx.fillStyle = "#0A0A0A";
+                ctx.fill();
+
+                ctx.strokeStyle = service.color;
+                ctx.lineWidth = 8;
+                ctx.stroke();
+
+                drawRoundedRect(ctx, 60, 55, 110, 10, 5);
+                ctx.fillStyle = service.color;
+                ctx.fill();
+
+                ctx.fillStyle = "#FFFFFF";
+                ctx.font = "800 70px Poppins, sans-serif";
+                ctx.fillText(service.title, 60, 165);
+
+                ctx.fillStyle = "#9CA3AF";
+                ctx.font = "400 40px Inter, sans-serif";
+                const nextY = wrapText(ctx, service.desc, 60, 235, 900, 52);
+
+                let tagX = 60;
+                const tagY = Math.max(360, nextY + 25);
+                ctx.font = "500 32px Inter, sans-serif";
+
+                service.tags.forEach((tag) => {
+                    const paddingX = 30;
+                    const textWidth = ctx.measureText(tag).width;
+                    const tagWidth = textWidth + paddingX * 2;
+
+                    drawRoundedRect(ctx, tagX, tagY, tagWidth, 70, 35);
+                    ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
+                    ctx.fill();
+
+                    ctx.strokeStyle = "rgba(255, 255, 255, 0.12)";
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+
+                    ctx.fillStyle = "#FFFFFF";
+                    ctx.fillText(tag, tagX + paddingX, tagY + 47);
+                    tagX += tagWidth + 20;
+                });
+
+                const texture = new THREE.CanvasTexture(offscreen);
+                texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+                return texture;
+            }
+
+            const cardGeo = new THREE.PlaneGeometry(10, 6.25);
+            const cards = [];
+
+            services.forEach((service, index) => {
+                const texture = createCardTexture(service);
+                const material = new THREE.MeshBasicMaterial({
+                    map: texture,
+                    transparent: true,
+                    opacity: 0,
+                    side: THREE.DoubleSide,
+                    depthWrite: false
+                });
+
+                const card = new THREE.Mesh(cardGeo, material);
+                card.position.set(0, 0, 0.35);
+                card.scale.setScalar(0.75);
+                card.rotation.set(0, 0, 0);
+                card.visible = false;
+                card.userData = { color: service.color, index: index };
+
+                monitorGroup.add(card);
+                cards.push(card);
+            });
+
+            let targetScroll = 0;
+            let currentScroll = 0;
+
+            function updateScrollTarget() {
+                const section = document.getElementById("services-3d");
+                if (!section) return;
+                const scrollRange = section.offsetHeight - window.innerHeight;
+                if (scrollRange <= 0) {
+                    targetScroll = 0;
+                    return;
+                }
+                const progress = (window.scrollY - section.offsetTop) / scrollRange;
+                targetScroll = Math.max(0, Math.min(1, progress));
+            }
+
+            function onResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                camera.position.z = window.innerWidth < 768 ? 26 : 20;
+                camera.lookAt(0, 0, 0);
+                updateScrollTarget();
+            }
+
+            window.addEventListener("scroll", updateScrollTarget);
+            window.addEventListener("resize", onResize);
+            updateScrollTarget();
+            onResize();
+
+            const screenBaseColor = new THREE.Color(0x050505);
+            const activeScreenColor = new THREE.Color();
+
+            function animate() {
+                requestAnimationFrame(animate);
+                currentScroll += (targetScroll - currentScroll) * 0.08;
+
+                const titleEl = document.getElementById("services-title");
+                if (titleEl) {
+                    titleEl.style.opacity = String(Math.max(0, 1 - currentScroll * 8));
+                }
+
+                let p = currentScroll * cardCount;
+                let activeIndex;
+                let cardProgress;
+
+                if (currentScroll <= 0.0001) {
+                    activeIndex = 0;
+                    cardProgress = 0;
+                } else if (currentScroll >= 0.9999) {
+                    activeIndex = cardCount - 1;
+                    cardProgress = 1;
+                } else {
+                    activeIndex = Math.floor(p - 0.0001);
+                    if (activeIndex < 0) activeIndex = 0;
+                    if (activeIndex > cardCount - 1) activeIndex = cardCount - 1;
+                    cardProgress = p - activeIndex;
+                    cardProgress = Math.max(0, Math.min(1, cardProgress));
+                }
+
+                const ease = 1 - Math.pow(1 - cardProgress, 3);
+
+                cards.forEach((card, index) => {
+                    if (index === activeIndex) {
+                        card.visible = ease > 0.001;
+                        card.material.opacity = ease;
+                        card.position.set(0, 0, 0.35 + ease * 4.8);
+                        card.scale.setScalar(0.75 + ease * 0.35);
+                        card.rotation.set(0, 0, 0);
+
+                        activeScreenColor.set(card.userData.color);
+                        screenLight.color.copy(activeScreenColor);
+                        screenLight.intensity = 0.8 + ease * 2.5;
+                        screenMat.color.copy(screenBaseColor).lerp(activeScreenColor, 0.18 * ease);
+
+                    } else if (index < activeIndex) {
+                        card.material.opacity = Math.max(0, card.material.opacity - 0.08);
+                        card.position.z += 0.12;
+                        card.scale.multiplyScalar(0.985);
+                        card.visible = card.material.opacity > 0.01;
+
+                    } else {
+                        card.material.opacity = 0;
+                        card.position.set(0, 0, 0.35);
+                        card.scale.setScalar(0.75);
+                        card.rotation.set(0, 0, 0);
+                        card.visible = false;
+                    }
+                });
+
+                renderer.render(scene, camera);
+            }
+
+            animate();
+        }
+    </script>
+</body>
+</html>
