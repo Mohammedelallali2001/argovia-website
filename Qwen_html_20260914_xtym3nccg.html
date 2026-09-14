@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <title>Argov. | Agence Digitale Sur-Mesure</title>
+    <meta name="description" content="Design, social media, vidéo, branding — chaque détail est pensé comme un artisan. Pas de templates, que du sur-mesure.">
+
+    <!-- Only blocking request: fonts (swap = text shows instantly) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============ INLINE CSS (replaces Tailwind CDN) ============ */
+        :root{
+            --primary:#D4A574; --primary-dark:#B8895A; --primary-light:#E5C09A;
+            --secondary:#2C3E50; --accent:#E67E22;
+            --bg:#000; --card:rgba(10,10,10,.6); --muted:#9CA3AF; --white:#fff;
+            --body:'Inter',system-ui,sans-serif;
+            --disp:'Poppins',system-ui,sans-serif;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{background:var(--bg);color:var(--white);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}
+        a{color:inherit;text-decoration:none}
+        svg{display:block}
+        .wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+        .disp{font-family:var(--disp);letter-spacing:-.02em}
+        .muted{color:var(--muted)}
+        .center{text-align-center}
+
+        /* Reveal on scroll (replaces AOS) */
+        [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+        [data-reveal].revealed{opacity:1;transform:none}
+
+        /* NAV */
+        .nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(0,0,0,.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05)}
+        .nav-inner{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+        .logo{font-family:var(--disp);font-weight:800;font-size:1.75rem;line-height:1;color:#fff}
+        .logo b{color:var(--primary);font-weight:800}
+        .nav-links{display:none;gap:32px;font-size:.875rem;font-weight:500;color:var(--muted)}
+        .nav-links a:hover{color:#fff}
+        .nav-cta{display:none;padding:10px 24px;border-radius:999px;font-size:.875rem;font-weight:600;color:#000;background:var(--primary);transition:background .3s}
+        .nav-cta:hover{background:var(--primary-light)}
+        @media(min-width:768px){.nav-links{display:flex}.nav-cta{display:inline-flex}}
+
+        /* BUTTONS */
+        .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 32px;border-radius:999px;font-weight:600;font-size:1rem;border:none;cursor:pointer;transition:all .3s ease}
+        .btn-primary{background:var(--primary);color:#000;box-shadow:0 0 20px rgba(212,165,116,.4)}
+        .btn-primary:hover{background:var(--primary-light);box-shadow:0 0 40px rgba(212,165,116,.7);transform:translateY(-2px)}
+        .btn-ghost{border:1px solid rgba(255,255,255,.2);color:#fff;background:transparent}
+        .btn-ghost:hover{background:rgba(255,255,255,.05);transform:translateY(-2px)}
+        .btn-lg{padding:20px 48px;font-size:1.25rem;font-weight:700}
+
+        /* HERO */
+        .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;padding:100px 0 60px;overflow:hidden}
+        .glow{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none}
+        .glow-1{top:50%;left:50%;width:560px;height:560px;transform:translate(-50%,-50%);background:rgba(212,165,116,.10)}
+        .glow-2{top:33%;right:25%;width:380px;height:380px;background:rgba(230,126,34,.05)}
+        .hero-inner{position:relative;z-index:1;max-width:1024px;margin:0 auto;padding:0 24px;text-align:center}
+        .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);border-radius:999px;font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--primary);margin-bottom:32px}
+        .badge svg{width:12px;height:12px}
+        h1{font-family:var(--disp);font-weight:800;letter-spacing:-.02em;line-height:1.1;font-size:clamp(2.5rem,7vw,6rem);margin-bottom:32px}
+        .grad{background:linear-gradient(90deg,#fff,#d1d5db,#9CA3AF);-webkit-background-clip:text;background-clip:text;color:transparent}
+        .grad-gold{background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+        .hero p{font-size:clamp(1.05rem,2vw,1.25rem);color:var(--muted);max-width:640px;margin:0 auto 48px;line-height:1.7;font-weight:400}
+        .hero-actions{display:flex;flex-direction:column;gap:24px;align-items:center;justify-content:center}
+        @media(min-width:640px){.hero-actions{flex-direction:row}}
+
+        /* SECTIONS */
+        .section{position:relative;z-index:1;padding:110px 0}
+        @media(min-width:768px){.section{padding:128px 0}}
+        .sec-title{font-family:var(--disp);font-weight:700;letter-spacing:-.02em;font-size:clamp(2rem,5vw,3rem);margin-bottom:16px}
+        .sec-title-lg{font-size:clamp(2.5rem,6vw,3.75rem);font-weight:800}
+        .divider{height:4px;width:80px;background:var(--primary);border-radius:999px}
+        .divider.mx{margin:0 auto}
+        .sec-head{margin-bottom:56px}
+        .sec-head.center{text-align:center}
+
+        /* GRIDS */
+        .grid{display:grid;gap:24px}
+        @media(min-width:768px){
+            .grid{gap:32px}
+            .g2{grid-template-columns:repeat(2,1fr)}
+            .g3{grid-template-columns:repeat(3,1fr)}
+            .g4{grid-template-columns:repeat(4,1fr)}
+            .g-split{grid-template-columns:repeat(2,1fr);gap:80px;align-items:center}
+        }
+        .stats-grid{grid-template-columns:repeat(2,1fr)}
+        @media(min-width:768px){.stats-grid{grid-template-columns:repeat(4,1fr)}}
+
+        /* CARDS */
+        .card{background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:32px;transition:transform .4s ease,border-color .4s ease}
+        .card:hover{border-color:rgba(212,165,116,.5);transform:translateY(-5px)}
+        .card.center{text-align:center}
+        .stat-num{font-family:var(--disp);font-weight:800;font-size:clamp(2.25rem,5vw,3rem);color:var(--primary);margin-bottom:8px}
+        .icon-box{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;background:rgba(212,165,116,.1);border:1px solid rgba(212,165,116,.2);color:var(--primary)}
+        .icon-box.accent{background:rgba(230,126,34,.1);border-color:rgba(230,126,34,.2);color:var(--accent)}
+        .icon-box svg{width:28px;height:28px}
+        .card h3{font-family:var(--disp);font-weight:700;font-size:1.5rem;margin-bottom:16px;color:var(--primary)}
+        .card h3.accent{color:var(--accent)}
+        .card p{color:var(--muted);font-size:1.05rem;line-height:1.7}
+
+        /* 3D STICKY SECTION */
+        #services-3d{position:relative}
+        .sticky-viewport{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+        #monitor-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;display:block}
+        #services-title{position:absolute;top:96px;left:0;right:0;padding:0 24px;text-align:center;z-index:10;pointer-events:none;transition:opacity .3s}
+        #services-title p{color:var(--muted);margin-top:16px}
+
+        /* QUOTE */
+        .quote-card{padding:48px;border-left:4px solid var(--primary)}
+        .quote-card svg{width:48px;height:48px;color:rgba(212,165,116,.4);margin-bottom:32px}
+        .quote-card blockquote{font-family:var(--disp);font-weight:600;font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.4;margin-bottom:32px}
+        .quote-who{display:flex;align-items:center;gap:20px}
+        .avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:#000;font-weight:700;font-size:1.25rem}
+        .quote-who small{display:block;color:var(--primary);text-transform:uppercase;letter-spacing:.1em;font-size:.75rem}
+
+        /* METHOD */
+        .step{position:relative}
+        .step-num{position:absolute;top:-24px;left:-24px;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem;color:#000;background:var(--primary)}
+        .step-num.navy{background:var(--secondary);color:#fff}
+        .step-num.orange{background:var(--accent)}
+
+        /* CTA / CONTACT */
+        .cta{background:rgba(10,10,10,.7);border-top:1px solid rgba(255,255,255,.05);text-align:center}
+        .cta h2{font-family:var(--disp);font-weight:800;letter-spacing:-.02em;font-size:clamp(2.5rem,7vw,4.5rem);margin-bottom:24px}
+        .cta p{font-size:1.25rem;color:var(--muted);margin-bottom:40px}
+        .contact-label{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:4px}
+        .contact-val{font-size:1.1rem;color:#fff;transition:color .3s}
+        a.contact-val:hover{color:var(--primary)}
+        .contact-row{margin-bottom:16px}
+        .input{width:100%;padding:12px 16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;color:#fff;font-family:inherit;font-size:1rem;transition:border-color .3s;margin-bottom:16px}
+        .input:focus{border-color:var(--primary);outline:none}
+        textarea.input{resize:none}
+        .btn-full{width:100%}
+
+        /* FOOTER */
+        footer{border-top:1px solid rgba(255,255,255,.05);padding:48px 0;position:relative;z-index:1}
+        .foot{display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center}
+        @media(min-width:768px){.foot{flex-direction:row;justify-content:space-between}}
+        .foot small{color:var(--muted)}
+
+        ::-webkit-scrollbar{width:6px}
+        ::-webkit-scrollbar-track{background:#000}
+        ::-webkit-scrollbar-thumb{background:#222;border-radius:10px}
+        ::-webkit-scrollbar-thumb:hover{background:var(--primary)}
+        ::selection{background:var(--primary);color:#000}
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="logo">Argov<b>.</b></a>
+            <div class="nav-links">
+                <a href="#services-3d">Services</a>
+                <a href="#stats">Résultats</a>
+                <a href="#method">Méthode</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <a href="#contact" class="nav-cta">Démarrer un projet</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        <div class="hero-inner" data-reveal>
+            <div class="badge">
+                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+                Agence faite main, pas à la chaîne
+            </div>
+            <h1>On donne vie à votre<br><span class="grad">présence digitale</span></h1>
+            <p>Design, social media, vidéo, branding — chaque détail est pensé comme un artisan. Pas de templates, que du sur-mesure.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary">Démarrer un projet</a>
+                <a href="#services-3d" class="btn btn-ghost">Voir nos services →</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- STATS -->
+    <section id="stats" class="section">
+        <div class="wrap">
+            <div class="sec-head center" data-reveal>
+                <h2 class="sec-title">Petit studio, grands résultats</h2>
+                <div class="divider mx"></div>
+            </div>
+            <div class="grid stats-grid">
+                <div class="card center" data-reveal><div class="stat-num">5+</div><p>ans d'expérience</p></div>
+                <div class="card center" data-reveal data-delay="100"><div class="stat-num">12+</div><p>clients servis</p></div>
+                <div class="card center" data-reveal data-delay="200"><div class="stat-num">80+</div><p>projets livrés</p></div>
+                <div class="card center" data-reveal data-delay="300"><div class="stat-num">100%</div><p>sur-mesure</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D SERVICES -->
+    <section id="services-3d">
+        <div class="sticky-viewport">
+            <canvas id="monitor-canvas"></canvas>
+            <div id="services-title">
+                <h2 class="sec-title disp">Quatre piliers, <span style="color:var(--primary)">une signature</span></h2>
+                <p>Scrollez pour explorer nos expertises</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TARGET -->
+    <section class="section">
+        <div class="wrap">
+            <div class="sec-head" data-reveal>
+                <h2 class="sec-title">On travaille avec ceux qui osent</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="grid g3">
+                <div class="card" data-reveal>
+                    <div class="icon-box"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></div>
+                    <h3>Santé & Bien-être</h3>
+                    <p>Médecins, cliniques, ostéopathes — une présence digitale qui inspire confiance.</p>
+                </div>
+                <div class="card" data-reveal data-delay="100">
+                    <div class="icon-box accent"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div>
+                    <h3 class="accent">Startups & PME</h3>
+                    <p>Le package digital complet pour passer de l'ombre à la lumière.</p>
+                </div>
+                <div class="card" data-reveal data-delay="200">
+                    <div class="icon-box"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg></div>
+                    <h3>Commerce & Retail</h3>
+                    <p>Votre vitrine physique mérite une expérience digitale à la hauteur.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIFFÉRENCE -->
+    <section class="section">
+        <div class="wrap g-split grid">
+            <div data-reveal>
+                <h2 class="sec-title sec-title-lg">Artisans du <br><span class="grad-gold">digital</span>.</h2>
+                <p class="muted" style="font-size:1.2rem;line-height:1.7;margin-bottom:24px">On ne vend pas de templates. On ne fait pas de copier-coller. <strong style="color:#fff">On construit des solutions sur-mesure</strong> pour chaque marque, chaque secteur, chaque objectif.</p>
+                <p class="muted" style="font-size:1.2rem;line-height:1.7">Cette indépendance, c'est la différence entre un site qui ressemble aux autres et <strong style="color:#fff">une présence digitale qu'on vous envie</strong>.</p>
+            </div>
+            <div data-reveal data-delay="150">
+                <div class="card quote-card">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                    <blockquote>« Le digital n'est pas une option, c'est le terrain de jeu de votre marque. On est là pour vous aider à y briller. »</blockquote>
+                    <div class="quote-who">
+                        <div class="avatar">A</div>
+                        <div>
+                            <strong>L'équipe Argov</strong>
+                            <small>Artisans du Digital</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METHOD -->
+    <section id="method" class="section">
+        <div class="wrap">
+            <div class="sec-head center" data-reveal>
+                <h2 class="sec-title">Comment on travaille</h2>
+                <div class="divider mx"></div>
+            </div>
+            <div class="grid g4" style="margin-top:32px">
+                <div class="card step" data-reveal><div class="step-num">01</div><h3>Discovery</h3><p>Brief, audit, objectifs.</p></div>
+                <div class="card step" data-reveal data-delay="100"><div class="step-num navy">02</div><h3>Strategy</h3><p>Architecture, roadmap.</p></div>
+                <div class="card step" data-reveal data-delay="200"><div class="step-num orange">03</div><h3>Création</h3><p>Design, contenu, itérations.</p></div>
+                <div class="card step" data-reveal data-delay="300"><div class="step-num">04</div><h3>Lancement</h3><p>Déploiement, suivi.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="section cta">
+        <div class="wrap" data-reveal>
+            <h2>Prêt à construire<br>quelque chose de beau ?</h2>
+            <p>Discutons de votre projet — on revient vers vous sous 24h, promis.</p>
+            <a href="mailto:contact@argov.it.com" class="btn btn-primary btn-lg">Démarrer un projet →</a>
+        </div>
+    </section>
+
+    <!-- CONTACT INFO -->
+    <section class="section">
+        <div class="wrap" style="max-width:896px">
+            <div class="sec-head center" data-reveal>
+                <h2 class="sec-title">Raconte-nous ton projet</h2>
+                <div class="divider mx"></div>
+            </div>
+            <div class="grid g2">
+                <div class="card" data-reveal>
+                    <h3 style="margin-bottom:24px">Contact</h3>
+                    <div class="contact-row"><p class="contact-label">Email</p><a class="contact-val" href="mailto:contact@argov.it.com">contact@argov.it.com</a></div>
+                    <div class="contact-row"><p class="contact-label">Téléphone / WhatsApp</p><a class="contact-val" href="tel:+212700386427">+212 700 386 427</a></div>
+                    <div class="contact-row"><p class="contact-label">Studio</p><p class="contact-val">Fès, Maroc</p></div>
+                </div>
+                <div class="card" data-reveal data-delay="150">
+                    <h3 style="margin-bottom:24px">Envoyez-nous un mot</h3>
+                    <form>
+                        <input class="input" type="text" placeholder="Votre nom">
+                        <input class="input" type="email" placeholder="Votre email">
+                        <textarea class="input" rows="4" placeholder="Votre message"></textarea>
+                        <button type="submit" class="btn btn-primary btn-full">Envoyer le message →</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="wrap foot">
+            <span class="logo" style="font-size:1.5rem">Argov<b>.</b></span>
+            <small>&copy; 2024 Argov. Tous droits réservés. Agence faite main, pas à la chaîne.</small>
+        </div>
+    </footer>
+
+    <script>
+        /* ===== Tiny reveal-on-scroll (replaces AOS) ===== */
+        (function () {
+            var io = new IntersectionObserver(function (es) {
+                es.forEach(function (e) {
+                    if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+            document.querySelectorAll('[data-reveal]').forEach(function (el) {
+                var d = el.getAttribute('data-delay');
+                if (d) el.style.transitionDelay = d + 'ms';
+                io.observe(el);
+            });
+        })();
+
+        /* ===== LAZY 3D: Three.js downloads ONLY when user nears the section ===== */
+        (function () {
+            var section = document.getElementById('services-3d');
+            var loaded = false;
+
+            function loadThree(cb) {
+                var s = document.createElement('script');
+                s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+                s.onload = cb;
+                document.head.appendChild(s);
+            }
+
+            var io = new IntersectionObserver(function (es) {
+                if (es[0].isIntersecting && !loaded) {
+                    loaded = true;
+                    io.disconnect();
+                    loadThree(init3D);
+                }
+            }, { rootMargin: '700px 0px' });   // start downloading slightly before arrival
+            io.observe(section);
+
+        function init3D() {
+            var canvas = document.getElementById('monitor-canvas');
+            var stickyBox = canvas.parentElement;
+            var isMobile = window.innerWidth < 768;
+
+            var scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x000000);
+            scene.fog = new THREE.Fog(0x000000, 18, 55);
+
+            var camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+            camera.position.set(0, 0, 20);
+            camera.lookAt(0, 0, 0);
+
+            var renderer = new THREE.WebGLRenderer({
+                canvas: canvas,
+                antialias: !isMobile,          // antialiasing OFF on phones = big FPS win
+                alpha: true,
+                powerPreference: 'high-performance'
+            });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 1.75));
+
+            scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+            var mainLight = new THREE.DirectionalLight(0xffffff, 1);
+            mainLight.position.set(5, 10, 7);
+            scene.add(mainLight);
+
+            var screenLight = new THREE.PointLight(0xD4A574, 2, 30);
+            screenLight.position.set(0, 0, 3);
+            scene.add(screenLight);
+
+            var monitorGroup = new THREE.Group();
+            scene.add(monitorGroup);
+
+            var frameMat = new THREE.MeshStandardMaterial({ color: 0x111111, metalness: 0.8, roughness: 0.2 });
+            var screenMat = new THREE.MeshBasicMaterial({ color: 0x050505 });
+            var standMat = new THREE.MeshStandardMaterial({ color: 0x0a0a0a, metalness: 0.9, roughness: 0.3 });
+
+            monitorGroup.add(new THREE.Mesh(new THREE.BoxGeometry(16, 10, 0.5), frameMat));
+            var screen = new THREE.Mesh(new THREE.PlaneGeometry(15, 9), screenMat);
+            screen.position.z = 0.26;
+            monitorGroup.add(screen);
+            var neck = new THREE.Mesh(new THREE.CylinderGeometry(0.8, 1.2, 5, 32), standMat);
+            neck.position.set(0, -7.2, -1.2);
+            monitorGroup.add(neck);
+            var base = new THREE.Mesh(new THREE.CylinderGeometry(4, 4, 0.3, 32), standMat);
+            base.position.set(0, -9.7, -1.2);
+            monitorGroup.add(base);
+
+            var services = [
+                { title: "Web Design & Dev", tags: ["UI/UX", "SEO", "Performance"], color: "#D4A574", desc: "Sites vitrines, landing pages — des interfaces premium." },
+                { title: "Social Media", tags: ["Instagram", "TikTok", "LinkedIn"], color: "#E67E22", desc: "Community management, contenu, Meta Ads." },
+                { title: "Vidéo & Motion", tags: ["Premiere Pro", "After Effects", "VFX"], color: "#2C3E50", desc: "Montage, motion design — du cinéma pour votre marque." },
+                { title: "Branding & Identité", tags: ["Logo", "Charte", "Packaging"], color: "#D4A574", desc: "Logos, univers graphique — une marque qu'on n'oublie pas." }
+            ];
+            var cardCount = services.length;
+
+            function drawRoundedRect(ctx, x, y, w, h, r) {
+                ctx.beginPath();
+                ctx.moveTo(x + r, y);
+                ctx.lineTo(x + w - r, y);
+                ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+                ctx.lineTo(x + w, y + h - r);
+                ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+                ctx.lineTo(x + r, y + h);
+                ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+                ctx.lineTo(x, y + r);
+                ctx.quadraticCurveTo(x, y, x + r, y);
+                ctx.closePath();
+            }
+
+            function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+                var words = text.split(" "), line = "";
+                for (var n = 0; n < words.length; n++) {
+                    var test = line + words[n] + " ";
+                    if (ctx.measureText(test).width > maxWidth && n > 0) {
+                        ctx.fillText(line, x, y); line = words[n] + " "; y += lineHeight;
+                    } else line = test;
+                }
+                ctx.fillText(line, x, y);
+                return y + lineHeight;
+            }
+
+            // Smaller textures on mobile = faster generation + less memory
+            var TEX_W = isMobile ? 640 : 1024;
+            var TEX_H = isMobile ? 400 : 640;
+
+            function createCardTexture(service) {
+                var c = document.createElement("canvas");
+                c.width = TEX_W; c.height = TEX_H;
+                var ctx = c.getContext("2d");
+                ctx.scale(TEX_W / 1024, TEX_W / 1024);   // draw in 1024-space, output smaller
+
+                drawRoundedRect(ctx, 0, 0, 1024, 640, 40);
+                ctx.fillStyle = "#0A0A0A"; ctx.fill();
+                ctx.strokeStyle = service.color; ctx.lineWidth = 8; ctx.stroke();
+
+                drawRoundedRect(ctx, 60, 55, 110, 10, 5);
+                ctx.fillStyle = service.color; ctx.fill();
+
+                ctx.fillStyle = "#FFFFFF"; ctx.font = "800 70px Poppins, sans-serif";
+                ctx.fillText(service.title, 60, 165);
+
+                ctx.fillStyle = "#9CA3AF"; ctx.font = "400 40px Inter, sans-serif";
+                var nextY = wrapText(ctx, service.desc, 60, 235, 900, 52);
+
+                var tagX = 60, tagY = Math.max(360, nextY + 25);
+                ctx.font = "500 32px Inter, sans-serif";
+                service.tags.forEach(function (tag) {
+                    var pad = 30, tw = ctx.measureText(tag).width + pad * 2;
+                    drawRoundedRect(ctx, tagX, tagY, tw, 70, 35);
+                    ctx.fillStyle = "rgba(255,255,255,0.05)"; ctx.fill();
+                    ctx.strokeStyle = "rgba(255,255,255,0.12)"; ctx.lineWidth = 2; ctx.stroke();
+                    ctx.fillStyle = "#FFFFFF"; ctx.fillText(tag, tagX + pad, tagY + 47);
+                    tagX += tw + 20;
+                });
+
+                var tex = new THREE.CanvasTexture(c);
+                tex.anisotropy = Math.min(4, renderer.capabilities.getMaxAnisotropy());
+                return tex;
+            }
+
+            var cardGeo = new THREE.PlaneGeometry(10, 6.25);
+            var cards = services.map(function (service, index) {
+                var card = new THREE.Mesh(cardGeo, new THREE.MeshBasicMaterial({
+                    map: createCardTexture(service),
+                    transparent: true, opacity: 0,
+                    side: THREE.DoubleSide, depthWrite: false
+                }));
+                card.position.set(0, -2.2, 0.4);
+                card.scale.setScalar(0.55);
+                card.visible = false;
+                card.userData = { color: service.color };
+                monitorGroup.add(card);
+                return card;
+            });
+
+            function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+            function lerp(a, b, t) { return a + (b - a) * t; }
+            function smoother(t) { t = clamp01(t); return t * t * t * (t * (t * 6 - 15) + 10); }
+
+            var targetScroll = 0, currentScroll = 0;
+            var baseVH = 0, scrollRange = 1, lastWidth = 0, baseCamZ = 20;
+
+            function sizeRenderer() {
+                var w = stickyBox.clientWidth || window.innerWidth;
+                var h = stickyBox.clientHeight || window.innerHeight;
+                renderer.setSize(w, h, false);
+                camera.aspect = w / h;
+                var aspect = w / h;
+                baseCamZ = aspect < 0.7 ? 32 : (aspect < 1 ? 27 : 20);
+                camera.position.z = baseCamZ;
+                camera.updateProjectionMatrix();
+                camera.lookAt(0, 0, 0);
+            }
+
+            function layout() {
+                lastWidth = window.innerWidth;
+                var pages = lastWidth < 768 ? 3 : 4;
+                baseVH = stickyBox.clientHeight || window.innerHeight;
+                section.style.height = (baseVH * pages) + 'px';
+                scrollRange = Math.max(1, section.offsetHeight - baseVH);
+                sizeRenderer();
+            }
+
+            function updateScrollTarget() {
+                targetScroll = Math.max(0, Math.min(1, (window.scrollY - section.offsetTop) / scrollRange));
+            }
+
+            window.addEventListener('scroll', updateScrollTarget, { passive: true });
+            window.addEventListener('resize', function () {
+                if (window.innerWidth !== lastWidth) layout(); else sizeRenderer();
+                updateScrollTarget();
+            });
+            window.addEventListener('orientationchange', function () { setTimeout(layout, 150); });
+            layout();
+            updateScrollTarget();
+
+            var ENTER = 0.5, EXIT = 0.5;
+
+            function updateCard(card, i, p, time) {
+                var isLast = (i === cardCount - 1);
+                var enterStart = i, enterEnd = i + ENTER;
+                var exitStart = i + 1, exitEnd = i + 1 + EXIT;
+                var opacity, z, y, scale, rotX, floating = false;
+
+                if (p <= enterStart) { opacity = 0; z = 0.4; y = -2.2; scale = 0.55; rotX = -0.3; }
+                else if (p < enterEnd) {
+                    var t = smoother((p - enterStart) / ENTER);
+                    opacity = clamp01(t * 1.6);
+                    z = lerp(0.4, 5.2, t); y = lerp(-2.2, 0, t);
+                    scale = lerp(0.55, 1, t); rotX = lerp(-0.3, 0, t);
+                } else if (p <= (isLast ? cardCount + 1 : exitStart)) {
+                    opacity = 1; z = 5.2; y = 0; scale = 1; rotX = 0; floating = true;
+                } else if (!isLast && p < exitEnd) {
+                    var t2 = smoother((p - exitStart) / EXIT);
+                    opacity = 1 - t2;
+                    z = lerp(5.2, 6.8, t2); y = lerp(0, 2.6, t2);
+                    scale = lerp(1, 1.1, t2); rotX = lerp(0, 0.18, t2);
+                } else { opacity = 0; z = 6.8; y = 2.6; scale = 1.1; rotX = 0.18; }
+
+                if (floating) {
+                    y += Math.sin(time * 1.4 + i * 1.7) * 0.07;
+                    rotX += Math.sin(time * 1.1 + i) * 0.015;
+                }
+
+                card.material.opacity = opacity;
+                card.position.set(0, y, z);
+                card.scale.setScalar(scale);
+                card.rotation.x = rotX;
+                card.visible = opacity > 0.002;
+                return opacity;
+            }
+
+            // Only render while the 3D section is on screen
+            var inView = false;
+            new IntersectionObserver(function (es) { inView = es[0].isIntersecting; }, { threshold: 0 }).observe(stickyBox);
+
+            var clock = new THREE.Clock();
+            var screenBaseColor = new THREE.Color(0x050505);
+            var glowColor = new THREE.Color(0xD4A574);
+            var tmpColor = new THREE.Color();
+            var prevTarget = 0, tilt = 0;
+            var titleEl = document.getElementById("services-title");
+
+            function animate() {
+                requestAnimationFrame(animate);
+                if (!inView) return;                       // zero GPU work off-screen
+
+                var dt = Math.min(clock.getDelta(), 0.05);
+                var time = clock.elapsedTime;
+
+                currentScroll += (targetScroll - currentScroll) * (1 - Math.exp(-7 * dt));
+
+                var velocity = (targetScroll - prevTarget) / Math.max(dt, 0.001);
+                prevTarget = targetScroll;
+                var tiltTarget = Math.max(-0.09, Math.min(0.09, velocity * 0.05));
+                tilt += (tiltTarget - tilt) * (1 - Math.exp(-6 * dt));
+                monitorGroup.rotation.x = tilt;
+
+                camera.position.z = baseCamZ - Math.sin(currentScroll * Math.PI) * 1.4;
+
+                if (titleEl) titleEl.style.opacity = String(Math.max(0, 1 - currentScroll * 8));
+
+                var p = currentScroll * cardCount;
+                var maxOpacity = 0, dominant = null;
+
+                for (var i = 0; i < cardCount; i++) {
+                    var op = updateCard(cards[i], i, p, time);
+                    if (op > maxOpacity) { maxOpacity = op; dominant = cards[i]; }
+                }
+
+                if (dominant && maxOpacity > 0.05) tmpColor.set(dominant.userData.color);
+                else tmpColor.set(0xD4A574);
+                glowColor.lerp(tmpColor, 1 - Math.exp(-5 * dt));
+
+                screenLight.color.copy(glowColor);
+                screenLight.intensity = 0.6 + maxOpacity * 2.6;
+                screenMat.color.copy(screenBaseColor).lerp(glowColor, 0.04 + 0.16 * maxOpacity);
+
+                renderer.render(scene, camera);
+            }
+            animate();
+        }
+        })();
+    </script>
+</body>
+</html>
