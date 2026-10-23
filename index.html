@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ARGOV is a creative studio for video, social, graphic design and filmmaking." />
+  <title>ARGOV — Make your signal impossible to miss.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- scroll-reactive background field — parallax decor, never interactive -->
+  <div class="bg-field" aria-hidden="true">
+    <span class="bf bf-circle" data-px="0.07"></span>
+    <span class="bf bf-circle bf-circle-2" data-px="-0.13"></span>
+    <span class="bf bf-globe" data-px="-0.06" data-rot="0.02">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1">
+        <circle cx="50" cy="50" r="48" vector-effect="non-scaling-stroke" />
+        <ellipse cx="50" cy="50" rx="21" ry="48" vector-effect="non-scaling-stroke" />
+        <ellipse cx="50" cy="50" rx="38.5" ry="48" vector-effect="non-scaling-stroke" />
+        <ellipse cx="50" cy="50" rx="48" ry="21" vector-effect="non-scaling-stroke" />
+        <ellipse cx="50" cy="50" rx="48" ry="38.5" vector-effect="non-scaling-stroke" />
+        <circle cx="50" cy="2" r="1.6" fill="currentColor" stroke="none" />
+        <circle cx="50" cy="98" r="1.6" fill="currentColor" stroke="none" />
+        <circle cx="2" cy="50" r="1.6" fill="currentColor" stroke="none" />
+        <circle cx="98" cy="50" r="1.6" fill="currentColor" stroke="none" />
+      </svg>
+    </span>
+    <span class="bf bf-coords" data-px="0.2">34.0332° N — 05.0003° W · FEZ</span>
+    <span class="bf bf-dots" data-px="-0.24"></span>
+    <span class="bf bf-plus bf-plus-1" data-px="0.28">+</span>
+    <span class="bf bf-plus bf-plus-2" data-px="-0.19">+</span>
+    <span class="bf bf-blip" data-px="0.34"></span>
+    <span class="bf bf-blip bf-blip-2" data-px="-0.28"></span>
+  </div>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Argov home">
+        <img class="brand-logo" src="assets/argov-logo-ink.png" alt="Argov" />
+        <span class="brand-text">Argov</span><span class="brand-dot" aria-hidden="true"></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#services"><span class="nav-idx" aria-hidden="true">01</span><span data-i18n="header-services">Services</span></a>
+        <a href="#work"><span class="nav-idx" aria-hidden="true">02</span><span data-i18n="header-clients">Our clients</span></a>
+        <a href="#about"><span class="nav-idx" aria-hidden="true">03</span><span data-i18n="header-approach">Our approach</span></a>
+      </nav>
+      <div class="header-actions">
+        <span class="header-clock" aria-hidden="true"><span class="clock-dot"></span>FEZ <b data-clock>--:--</b></span>
+        <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">FR</button>
+        <a class="header-cta" href="#contact" data-i18n="cta-start">Start a project <span>↗</span></a>
+      </div>
+      <button class="menu-toggle" aria-label="Open menu" data-i18n-aria="menu-open-aria" aria-expanded="false"><span></span><span></span></button>
+      <span class="page-progress" aria-hidden="true"></span>
+    </header>
+
+    <main id="top">
+      <section class="hero section-pad">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span><span data-i18n="hero-eyebrow"> Independent creative studio · Fez / Worldwide</span></p>
+          <h1 data-i18n="hero-h1">Make your<br><em>signal</em> impossible<br>to miss<span class="accent">.</span></h1>
+          <p class="hero-intro" data-i18n="hero-intro">We turn ambitious ideas into culture-moving content, sharp identities and stories people remember.</p>
+          <div class="hero-actions">
+            <a class="button button-dark" href="#contact" data-i18n="btn-tell">Tell us everything <span>↗</span></a>
+            <a class="text-link" href="#work" data-i18n="link-work">Explore our work <span>↓</span></a>
+          </div>
+          <div class="scroll-cue" aria-hidden="true"><span class="scroll-cue-line"></span><span data-i18n="cue-scroll">Scroll to explore</span><span class="scroll-cue-arrow">↓</span></div>
+        </div>
+        <div class="hero-art" aria-label="Argov animated logo">
+          <div class="art-frame logo-frame">
+            <div class="logo-stage mascot-stage">
+              <div class="mascot" role="img" aria-label="Argov mascot">
+                <div class="mascot-body b1" data-slide="0.22">
+                  <div class="mascot-eyes">
+                    <span class="m-eye"><span class="m-pupil"></span></span>
+                    <span class="m-eye"><span class="m-pupil"></span></span>
+                  </div>
+                </div>
+                <div class="mascot-body b2" data-slide="0.12">
+                  <div class="mascot-eyes">
+                    <span class="m-eye"><span class="m-pupil"></span></span>
+                    <span class="m-eye"><span class="m-pupil"></span></span>
+                  </div>
+                </div>
+                <div class="mascot-body b3" data-slide="-0.05">
+                  <div class="mascot-eyes">
+                    <span class="m-pupil solo"></span>
+                    <span class="m-pupil solo"></span>
+                  </div>
+                </div>
+                <div class="mascot-body b4" data-slide="0.1">
+                  <div class="mascot-eyes">
+                    <span class="m-pupil solo"></span>
+                    <span class="m-pupil solo"></span>
+                  </div>
+                  <span class="m-mouth"></span>
+                </div>
+              </div>
+              <span class="logo-stage-line"></span>
+              <span class="logo-stage-sub" data-i18n="stage-sub">Creative studio / 01</span>
+            </div>
+            <span class="logo-stage-corner" data-i18n="corner">SCROLL / SIGNAL</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="marquee" aria-label="Our capabilities">
+        <div class="marquee-track"><span data-i18n="mq-video">VIDEO EDITING</span><b>✳</b><span data-i18n="mq-social">SOCIAL STRATEGY</span><b>✳</b><span data-i18n="mq-graphic">GRAPHIC DESIGN</span><b>✳</b><span data-i18n="mq-film">FILMMAKING</span><b>✳</b><span data-i18n="mq-video">VIDEO EDITING</span><b>✳</b><span data-i18n="mq-social">SOCIAL STRATEGY</span><b>✳</b></div>
+      </section>
+
+      <section class="services section-pad" id="services">
+        <div class="section-heading"><p class="eyebrow" data-i18n="svc-eyebrow">What we do</p><h2 data-i18n="svc-h2">Built for the<br><em>bold move.</em></h2><p class="section-note" data-i18n="svc-note">One studio, four ways to make your brand impossible to scroll past.</p></div>
+        <div class="service-list">
+          <article class="service-item"><div class="service-number">01</div><div class="service-main"><h3 data-i18n="svc1-title">Video editing <span>↗</span></h3><p data-i18n="svc1-desc">From raw footage to can’t-look-away. Social cuts, brand films, campaign edits and motion that moves at the speed of culture.</p><div class="service-tags"><span data-i18n="svc1-tag1">Short-form</span><span data-i18n="svc1-tag2">Brand films</span><span data-i18n="svc1-tag3">Motion</span></div></div><div class="service-visual visual-cream"><dotlottie-wc class="service-art" src="https://lottie.host/bd3e5594-ab80-4ff5-a25b-3f8a838e66d0/6xAdawOWPo.lottie" autoplay loop background="transparent"></dotlottie-wc></div></article>
+          <article class="service-item"><div class="service-number">02</div><div class="service-main"><h3 data-i18n="svc2-title">Social management <span>↗</span></h3><p data-i18n="svc2-desc">We build a living presence for your brand: clear strategy, daily thinking, and content your community wants to share.</p><div class="service-tags"><span data-i18n="svc2-tag1">Strategy</span><span data-i18n="svc2-tag2">Content calendars</span><span data-i18n="svc2-tag3">Community</span></div></div><div class="service-visual visual-yellow"><dotlottie-wc class="service-art" src="https://lottie.host/1b53aae1-f3cf-4072-9d10-faafca9ee323/xn49Op2Xnp.lottie" autoplay loop background="transparent"></dotlottie-wc></div></article>
+          <article class="service-item"><div class="service-number">03</div><div class="service-main"><h3 data-i18n="svc3-title">Graphic design <span>↗</span></h3><p data-i18n="svc3-desc">Identities, campaigns and visual systems with enough edge to stand apart—and enough clarity to stick around.</p><div class="service-tags"><span data-i18n="svc3-tag1">Brand identity</span><span data-i18n="svc3-tag2">Art direction</span><span data-i18n="svc3-tag3">Digital</span></div></div><div class="service-visual visual-blue"><dotlottie-wc class="service-art" src="https://lottie.host/5eb20d50-e119-4b66-b8f3-050c80ec6dd9/z6w12WEzpe.lottie" autoplay loop background="transparent"></dotlottie-wc></div></article>
+          <article class="service-item"><div class="service-number">04</div><div class="service-main"><h3 data-i18n="svc4-title">Filmmaking <span>↗</span></h3><p data-i18n="svc4-desc">Big feeling, beautifully shot. We develop and produce visual stories from first frame to final grade.</p><div class="service-tags"><span data-i18n="svc4-tag1">Creative direction</span><span data-i18n="svc4-tag2">Production</span><span data-i18n="svc4-tag3">Post</span></div></div><div class="service-visual visual-lilac"><dotlottie-wc class="service-art" src="https://lottie.host/7694b4cf-b9a7-4c8d-a362-8dac3f33da43/k21eu1muui.lottie" autoplay loop background="transparent"></dotlottie-wc></div></article>
+        </div>
+      </section>
+
+      <section class="work section-pad" id="work">
+        <div class="work-top"><div><p class="eyebrow" data-i18n="work-eyebrow">Brands we’ve worked with</p><h2 data-i18n="work-h2">People we<br><em>move with.</em></h2></div><a class="text-link" href="#contact" data-i18n="work-cta">Start a project <span>↗</span></a></div>
+        <div class="project-grid">
+          <a class="project-card project-large" href="https://www.instagram.com/ataydahmiss41022/" target="_blank" rel="noopener noreferrer"><div class="project-image client-profile-image"><img src="assets/instagram-atay-dahmiss-header.png" alt="Instagram profile header for Atay Dahmiss" /><div class="profile-mask"></div><span class="profile-name">Atay Dahmiss</span><span class="project-index">01 / 05</span></div><div class="project-meta"><h3>Atay Dahmiss</h3><span>Instagram ↗</span></div></a>
+          <a class="project-card" href="https://www.instagram.com/ataychaara4011/" target="_blank" rel="noopener noreferrer"><div class="project-image client-profile-image"><img src="assets/instagram-atay-chaara-header.png" alt="Instagram profile header for Atay Chaara" /><div class="profile-mask"></div><span class="profile-name">Atay Chaara</span><span class="project-index">02 / 05</span></div><div class="project-meta"><h3>Atay Chaara</h3><span>Instagram ↗</span></div></a>
+          <a class="project-card" href="https://www.instagram.com/centre_belge/" target="_blank" rel="noopener noreferrer"><div class="project-image client-profile-image"><img src="assets/instagram-centre-belge-header.png" alt="Instagram profile header for Centre Belge" /><div class="profile-mask"></div><span class="profile-name">Centre Belge</span><span class="project-index">03 / 05</span></div><div class="project-meta"><h3>Centre Belge</h3><span>Instagram ↗</span></div></a>
+          <a class="project-card" href="https://www.instagram.com/osteopathe_centrebelge/" target="_blank" rel="noopener noreferrer"><div class="project-image client-profile-image"><img src="assets/instagram-osteopate-centre-belge-header.png" alt="Instagram profile header for Osteopate Centre Belge" /><div class="profile-mask"></div><span class="profile-name">Osteopate Centre Belge</span><span class="project-index">04 / 05</span></div><div class="project-meta"><h3>Osteopate_Centre Belge</h3><span>Instagram ↗</span></div></a>
+          <a class="project-card project-client-card" href="https://www.instagram.com/centre_belge_kids/" target="_blank" rel="noopener noreferrer"><div class="project-image client-profile-image"><img src="assets/instagram-centre-belge-kids-header.png" alt="Instagram profile header for Centre Belge Kids" /><div class="profile-mask"></div><span class="profile-name">Centre Belge Kids</span><span class="project-index">05 / 05</span></div><div class="project-meta"><h3>Centre_belge_kids</h3><span>Instagram ↗</span></div></a>
+        </div>
+      </section>
+
+      <section class="manifesto section-pad" id="about"><div class="manifesto-field" aria-hidden="true"><span class="mf-orbit"></span><span class="mf-grid"></span></div><div class="manifesto-mark" aria-hidden="true">✳</div><p class="eyebrow"><span class="eyebrow-dot"></span><span data-i18n="msg-eyebrow">The ARGOV approach</span></p><h2 data-i18n="msg-h2">Good work gets<br>attention. <em>Great work<br>keeps it.</em></h2><div class="manifesto-bottom"><p data-i18n="msg-desc">We bring strategy, craft and a healthy dose of curiosity to every brief. No templates. No autopilot. Just work that feels like you, only louder.</p><a class="button button-light" href="#contact" data-i18n="msg-btn">Meet the studio <span>↗</span></a></div></section>
+
+      <section class="testimonial section-pad"><div class="quote-mark">“</div><blockquote data-i18n="test-quote">Argov works like an in-house team with outside eyes. Six months in, our content is sharper, more consistent, and finally <em>worth stopping for.</em></blockquote><div class="quote-credit"><span class="credit-line"></span><span data-i18n="test-credit">Dr Hiba Argoubi · Founder</span></div></section>
+
+      <section class="contact section-pad" id="contact"><div class="contact-copy"><p class="eyebrow" data-i18n="contact-eyebrow">Have a good one?</p><h2 data-i18n="contact-h2">Let’s make<br>something<br><em>unmissable.</em></h2></div><div class="contact-card"><div class="contact-buddy" aria-hidden="true"><span class="cb-slab cb-orange"><span class="cb-eyes"><span class="cb-eye"><span class="cb-pupil"></span></span><span class="cb-eye"><span class="cb-pupil"></span></span></span><span class="cb-mouth"></span></span></div><p data-i18n="contact-card">Tell us about the idea, the problem, or the dream. We’re listening.</p><a href="mailto:Contact@argov.it.com" class="contact-email">Contact@argov.it.com <span>↗</span></a><a class="contact-whatsapp" href="https://wa.me/212700386427" target="_blank" rel="noopener noreferrer">WhatsApp +212 700 38 64 27 <span>↗</span></a><div class="contact-details"><span data-i18n="contact-detail-place">Fez, Maroc / Everywhere</span><span>Instagram ↗</span><a class="contact-social" href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube ↗</a><a class="contact-social" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="contact-social" href="https://tiktok.com" target="_blank" rel="noopener noreferrer">TikTok ↗</a></div></div></section>
+    </main>
+
+    <footer class="site-footer"><a class="brand" href="#top"><img class="brand-logo" src="assets/argov-logo-ink.png" alt="Argov" /><span class="brand-text">Argov</span><span class="brand-dot" aria-hidden="true"></span></a><span>© 2024 ARGOV STUDIO</span><span data-i18n="footer-love">Made with love.</span><a href="#top" data-i18n="footer-top">Back to top ↑</a></footer>
+  </div>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-wc@0.10.0/dist/index.min.js"></script>
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
